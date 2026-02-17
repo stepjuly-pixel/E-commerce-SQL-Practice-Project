@@ -47,6 +47,7 @@ Marketing & forecasting
 - revenue_predict
 
 ## Query 1 – Revenue by Continent
+[Query 1 – Revenue by Continent](query1.sql)
 ### Task
 
 For each continent:
