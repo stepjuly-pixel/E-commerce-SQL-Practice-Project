@@ -69,6 +69,7 @@ For each continent:
 - Grouping and sorting
 
 ## Query 2 – Monthly Marketing Cost Share
+[Query 2 – Monthly Marketing Cost Share](query2.sql)
 ### Task
 
 Calculate the percentage of monthly paid search costs relative to total costs across the whole period.
@@ -84,6 +85,7 @@ Calculate the percentage of monthly paid search costs relative to total costs ac
 - Analytical percentage calculation
 
 ## Query 3 – Session Engagement Rate by Device
+[Query 3 – Session Engagement Rate by Device](query3.sql)
 ### Task
 
 Calculate the percentage of events where session_engaged = 1 out of all events where this value is not NULL, grouped by device.
@@ -99,6 +101,7 @@ Calculate the percentage of events where session_engaged = 1 out of all events w
 - Behavioral analysis by device
 
 ## Query 4 – Cumulative Revenue vs Target
+[Query 4 – Cumulative Revenue vs Target](query4.sql)
 ### Task
 
 Calculate cumulative actual revenue vs cumulative predicted revenue by date and compute the percentage of target achievement.
