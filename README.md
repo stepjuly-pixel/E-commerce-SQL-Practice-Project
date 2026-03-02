@@ -1,154 +1,92 @@
-# E-commerce-SQL-Practice-Project
+# E-Commerce SQL Practice Queries
 
-## Overview
+## Project Overview
 
-This repository contains several independent SQL analytical queries built on a shared e-commerce database.
-
-The goal of this project is to practice:
-
-- Data aggregation
-
-- JOIN operations
-
-- Window functions
-
-- CTE usage
-
-- Working with nested data
-
-- Revenue and marketing analysis
+This repository contains four independent analytical SQL queries built on a shared e-commerce database.
+Each query addresses a specific business question and demonstrates different SQL techniques: aggregations, joins, window functions, CTEs, UNNEST, and UNION ALL.
 
 All queries are written in BigQuery SQL.
 
+## Tools & Technologies
+
+- SQL (BigQuery)
+
+- Window functions (`SUM OVER`, `DENSE_RANK`)
+
+- CTEs, `UNION ALL`, `UNNEST`
+
+- Conditional aggregation (`CASE WHEN`)
+
 ## Database Schema
 
-![database_connections1](schema.png)
+<img src="docs/schema.png" width="800" />
 
-### The database includes:
+The database includes:
 
-Core transactional tables
+- **Transactional tables:** `order`, `product`
 
-- `order`
+- **Session & event data:** `session`, `session_params`, `event_params`
 
-- `product`
+- **Marketing & forecasting:** `paid_search_cost`, `revenue_predict`
 
-Session & event data
-  
-- `session`
+## Queries
 
-- `session_params`
+### Query 1: Revenue by Continent
 
-- `event_params`
+📄 [View Query](sql/query1.sql)
 
-Marketing & forecasting
+For each continent, calculate total revenue, revenue from the "Bookcases & shelving units" category, and the percentage share of this category.
 
-- `paid_search_cost`
+**SQL techniques:** multiple table joins, conditional aggregation with `CASE WHEN`, percentage calculation, `GROUP BY` with `ORDER BY`.
 
-- `revenue_predict`
+---
 
-## Query 1 – Revenue by Continent
-[Query 1 – Revenue by Continent](query1.sql)
-### Task
+### Query 2: Monthly Marketing Cost Share
 
-For each continent:
+📄 [View Query](sql/query2.sql)
 
-- Calculate total revenue
+Calculate the percentage of monthly paid search costs relative to total costs across the entire period.
 
-- Calculate revenue from Bookcases & shelving units
+**SQL techniques:** date extraction with `EXTRACT`, subquery aggregation, window function `SUM() OVER()` for analytical percentage calculation.
 
-- Compute the percentage share of this category
+---
 
-### What this query demonstrates
+### Query 3: Session Engagement Rate by Device
 
-- Multiple table joins
+📄 [View Query](sql/query3.sql)
 
-- Conditional aggregation
+Calculate the percentage of events where `session_engaged = 1` out of all events where this value is not NULL, grouped by device.
 
-- Percentage calculation
+**SQL techniques:** CTE, working with nested fields using `UNNEST`, conditional counting, behavioral segmentation by device.
 
-- Grouping and sorting
+---
 
-## Query 2 – Monthly Marketing Cost Share
-[Query 2 – Monthly Marketing Cost Share](query2.sql)
-### Task
+### Query 4: Cumulative Revenue vs Target
 
-Calculate the percentage of monthly paid search costs relative to total costs across the whole period.
-
-### What this query demonstrates
-
-- Date extraction (EXTRACT)
-
-- Aggregation by month and year
-
-- Window functions (SUM() OVER())
-
-- Analytical percentage calculation
-
-## Query 3 – Session Engagement Rate by Device
-[Query 3 – Session Engagement Rate by Device](query3.sql)
-### Task
-
-Calculate the percentage of events where session_engaged = 1 out of all events where this value is not NULL, grouped by device.
-
-### What this query demonstrates
-
-- CTE usage
-
--  with nested fields (UNNEST)
-
-- Conditional counting
-
-- Behavioral analysis by device
-
-## Query 4 – Cumulative Revenue vs Target
-[Query 4 – Cumulative Revenue vs Target](query4.sql)
-### Task
+📄 [View Query](sql/query4.sql)
 
 Calculate cumulative actual revenue vs cumulative predicted revenue by date and compute the percentage of target achievement.
 
-### What this query demonstrates
+**SQL techniques:** `UNION ALL` to combine actual and forecasted data, cumulative sums with `SUM() OVER(ORDER BY date)`, revenue progress tracking.
 
-- UNION ALL
+## How to Run
 
-- Cumulative sums with window functions
+1. Clone this repository
 
-- Revenue progress tracking
+2. Open any query from the [`sql/`](sql/) folder
 
-- Combining real and forecasted data
-
-## Skills Practiced
-
-- SQL joins
-
-- Aggregations
-
-- Window functions
-
-- CTEs
-
-- UNION operations
-
-- Working with nested data
-
-- Basic business metrics calculation
-
-## How to Use
-
-1. Run the queries in BigQuery.
-
-2. Each query is independent and can be executed separately.
-
-3. The schema image should be uploaded to the repository root (e.g., schema.png) and referenced in this README.
+3. Run in BigQuery — each query is independent and can be executed separately
 
 ## Project Structure
 
 ```
-e-commerce-sql-practice-project/
-
-  README.md
-  query1.sql
-  query2.sql
-  query3.sql
-  query4.sql
-  schema.png
+e-commerce-sql-practice/
+├── sql/
+│   ├── query1.sql
+│   ├── query2.sql
+│   ├── query3.sql
+│   └── query4.sql
+├── docs/
+│   └── schema.png
+└── README.md
 ```
